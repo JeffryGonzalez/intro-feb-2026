@@ -9,6 +9,8 @@ Each morning, we will start the class with the instructor (Me! Jeff) displaying 
 The list will be displayed without attribution to protect anonymity, so give enough detail that I can tell what you are talking about.
 
 If, during the review, you feel enough clarity to remove it from the list, you can do that.
+- not sure the best way yet. Have some ideas.
+- SSE, refreshing the page, web sockets - technical?
 
 The instructor can also "punt" - can say "We are going to spend a whole day on that later... so" and these will go to a part of the list called "backlog" - which are debts to be paid.
 
