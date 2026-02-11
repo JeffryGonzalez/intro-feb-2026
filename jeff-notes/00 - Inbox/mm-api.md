@@ -43,8 +43,8 @@ Content-Type: application/json
 Authorization: Bearer ???? (Fake this for while)
 
 {
-    "title": "Unit Testing",
-    "description": "What the difference between a unit test and an integration test"
+    "title": "Database Stuff",
+    "description": "What is a document database? "
 }
 
 ```

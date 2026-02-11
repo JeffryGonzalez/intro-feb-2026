@@ -7,13 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 var connectionString = builder.Configuration.GetConnectionString("db-mm") ?? throw new Exception("No Connection String");
-// appsettings.json -> "ConnectionString": { "tacos": "...." }
-// See if there is an Environment Variable on the machine your running on called "ASPNETCORE_ENVIRONEMENT"
-// look for a appsettings.ENVIRONMENT.json and that value.
-// Looks at environment variables -
-// ConnectionStrings__tacos
 
-Console.WriteLine($"Using Connection String {connectionString}");
 
 builder.Services.AddMarten(config =>
 {
