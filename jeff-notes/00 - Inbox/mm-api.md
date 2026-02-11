@@ -43,7 +43,8 @@ Content-Type: application/json
 Authorization: Bearer ???? (Fake this for while)
 
 {
-    "title": "HTTP Stuff"
+    "title": "Unit Testing",
+    "description": "What the difference between a unit test and an integration test"
 }
 
 ```
