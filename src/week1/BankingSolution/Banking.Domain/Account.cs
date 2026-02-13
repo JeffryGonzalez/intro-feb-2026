@@ -7,8 +7,9 @@ public class Account
 {
     private decimal _currentBalance = 5000M;
 
-    public void Deposit(decimal amountToDeposit)
+    public void Deposit(TransactionAmount amountToDeposit)
     {
+        // if the amountToDeposit is 0 or less, throw an exception - abnormal end.
 
         _currentBalance += amountToDeposit;
     }
@@ -20,10 +21,11 @@ public class Account
     }
 
     // Primitive Obsession 
-    public void Withdraw(decimal amountToWithdraw)
+    // You can call this with any decimal value and it will work. 
+    public void Withdraw(TransactionAmount amountToWithdraw)
     {
 
-        if (amountToWithdraw > _currentBalance)
+        if (WouldCauseOverdraft(amountToWithdraw))
         {
             // exit with an exception - abnormal end.
             throw new OverdraftNotAllowedException();
@@ -33,6 +35,10 @@ public class Account
 
     }
 
+    private bool WouldCauseOverdraft(decimal amountToWithdraw)
+    {
+        return amountToWithdraw > _currentBalance;
+    }
 
 }
 

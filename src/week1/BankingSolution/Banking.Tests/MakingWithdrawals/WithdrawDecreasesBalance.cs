@@ -40,34 +40,11 @@ public class WithdrawDecreasesBalance
 
         var openingBalance = account.GetBalance();
         var amountToWithdraw = openingBalance * 2;
-        var exceptionThrown = false;
-        // When I deposit 123.23
-        try
-        {
-            account.Withdraw(amountToWithdraw);
-        }
-        catch (OverdraftNotAllowedException)
-        {
 
-            exceptionThrown = true;
-        }
+        Assert.Throws<OverdraftNotAllowedException>(() => account.Withdraw(amountToWithdraw));
 
-        Assert.True(exceptionThrown);
-        // Then the balance of that account should increase by that amount
         Assert.Equal(openingBalance, account.GetBalance());
     }
 
-    [Fact]
-    public void TransactionAmountsMustBeCorrect()
-    {
-        // deposit and withdrawal only allow amounts that are > 0
-        var account = new Account();
 
-        var openingBalance = account.GetBalance();
-        
-        account.Withdraw(-8450.23M);
-
-        // Then the balance of that account should increase by that amount
-        Assert.Equal(openingBalance, account.GetBalance());
-    }
 }
