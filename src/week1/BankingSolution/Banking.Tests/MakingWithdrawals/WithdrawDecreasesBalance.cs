@@ -55,15 +55,9 @@ public class WithdrawDecreasesBalance
         // deposit and withdrawal only allow amounts that are > 0
         var account = new Account();
 
-
         var openingBalance = account.GetBalance();
         
-
-    
-    
         account.Withdraw(-8450.23M);
-
-
 
         // Then the balance of that account should increase by that amount
         Assert.Equal(openingBalance, account.GetBalance());
