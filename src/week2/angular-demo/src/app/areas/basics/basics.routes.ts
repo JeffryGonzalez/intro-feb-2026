@@ -1,9 +1,25 @@
 import { Routes } from '@angular/router';
 import { Home } from './home';
+import { HomePage } from './pages/home';
+import { SignalsPage } from './pages/signals';
+
 export const BasicsRoutes: Routes = [
   {
     path: '',
     component: Home,
-    children: [],
+    children: [
+      {
+        path: 'dashboard',
+        component: HomePage,
+      },
+      {
+        path: 'signals',
+        component: SignalsPage,
+      },
+      {
+        path: '**',
+        redirectTo: 'dashboard',
+      },
+    ],
   },
 ];
