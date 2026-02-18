@@ -1,60 +1,54 @@
 # Wednesday
 
 
-## Problems?
+# Wednesday
 
-Disable a few extensions - Total TypeScript
 
-## Getting Caught Up
+## MSW
 
-- Pull My Code
-- Npm install
+```sh
+npm i -D msw
+npx msw init public --save
+```
 
-## More Setup
+## `src/app/__mocks__/browser.ts`
 
-### TypeScript Intro
+```ts
+import { setupWorker } from 'msw/browser';
+import { handlers } from './handlers';
+export const worker = setupWorker(...handlers);
+```
 
-- Playground
+## `src/app/__mocks__/handler.ts`
 
-### Linting
+```ts
+import { HttpHandler } from 'msw';
 
-[Angular EsLint](https://github.com/angular-eslint/angular-eslint)
+export const handlers: HttpHandler[] = [];
+```
 
-## Angular
+## `src/main.ts`
 
-### Signals
+```ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { App } from './app/app';
+import { isDevMode } from '@angular/core';
 
-- Intro to Signals
-- Computed Signals
+async function enableMocking() {
+  if (isDevMode()) {
+    const { worker } = await import('./app/__mocks__/browser');
+    console.info('Starting the mock service worker since you are in development mode.');
+    return await worker.start({
+      quiet: true, // be quiet. don't log out a bunch of stuff to the console.
+      onUnhandledRequest: 'bypass', // if I don't have fake handler, just really send the request.
+    });
+  }
+  return;
+}
+enableMocking().then(() => bootstrapApplication(App, appConfig).catch((err) => console.error(err)));
+```
 
-### Components
+I 
 
-- inputs
-- outputs
 
-### Services and Providers
-
-- SignalStore
-  - like `IDocumentSession` sort of.
-
-### Forms
-
-- Template Driven Forms
-- Reactive Forms
-- Signal Forms FTW.
-
-### API Access
-
-- Resource, rxResource, httpResource
-
-### Mock Service Workers - Test Doubles for API Access
-
-Install it as a dep.
-
-https://mswjs.io/docs/integrations/browser#generating-the-worker-script
-
-Integrate:
-
-https://github.com/HypertheoryTraining/angular-starter-2026/blob/main/src/main.ts
-
-(get rid of environment, use `isDevMode()`)
