@@ -53,10 +53,11 @@ public record QuestionListItem
     {
         public Guid Id { get; set; }
         public string Content { get; set; } = string.Empty;
+
     }
 
     public record QuestionSubmissionItem
     {
-        [MinLength(5), MaxLength(100)] public required string Title { get; set; } = string.Empty;
+        [MinLength(3), MaxLength(50)] public required string Title { get; set; } = string.Empty;
         [MinLength(10), MaxLength(1000)] public required string Content { get; set; } = string.Empty;
     }
