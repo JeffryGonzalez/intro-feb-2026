@@ -1,5 +1,5 @@
 import { delay, http, HttpHandler, HttpResponse } from 'msw';
-
+import questionHandler from './questions-handler';
 const fakeTodos = [
   {
     id: '1',
@@ -13,6 +13,7 @@ const fakeTodos = [
   },
 ];
 export const handlers: HttpHandler[] = [
+  ...questionHandler,
   http.get('https://jsonplaceholder.typicode.com/todos', async () => {
     await delay(); // 200ms delay to simulate network latency
     return HttpResponse.json(fakeTodos);
