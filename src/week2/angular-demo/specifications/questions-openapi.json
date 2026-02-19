@@ -99,18 +99,23 @@
         }
       },
       "QuestionSubmissionItem": {
-        "required": ["title", "content"],
+        "required": ["title", "content", "priority"],
         "type": "object",
         "properties": {
           "title": {
             "maxLength": 50,
-            "minLength": 3,
+            "minLength": 5,
             "type": "string"
           },
           "content": {
-            "maxLength": 1000,
-            "minLength": 10,
+            "maxLength": 500,
+            "minLength": 30,
             "type": "string"
+          },
+          "priority": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": ["integer", "string"],
+            "format": "int32"
           }
         }
       },

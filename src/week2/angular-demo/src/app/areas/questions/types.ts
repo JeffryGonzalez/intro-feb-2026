@@ -1,12 +1,12 @@
-export type QuestionListItem = {
-  id: string;
-  title: string;
-  content: string;
-  submittedAnswers?: {
-    id: string;
-    content: string;
-  }[];
-};
+// export type QuestionListItem = {
+//   id: string;
+//   title: string;
+//   content: string;
+//   submittedAnswers?: {
+//     id: string;
+//     content: string;
+//   }[];
+// };
 
 /*    public record QuestionSubmissionItem
     {
@@ -14,7 +14,7 @@ export type QuestionListItem = {
         [MinLength(10), MaxLength(1000)] public required string Content { get; set; } = string.Empty;
     }*/
 
-export type QuestionSubmissionItem = {
-  title: string;
-  content: string;
-};
+// export type QuestionSubmissionItem = {
+//   title: string;
+//   content: string;
+// };

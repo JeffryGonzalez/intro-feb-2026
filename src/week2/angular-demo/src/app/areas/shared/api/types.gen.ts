@@ -14,6 +14,7 @@ export type QuestionListItem = {
 export type QuestionSubmissionItem = {
     title: string;
     content: string;
+    priority: number | string;
 };
 
 export type SubmittedAnswer = {

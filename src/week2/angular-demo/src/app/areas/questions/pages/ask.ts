@@ -1,6 +1,16 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { QuestionSubmissionItem } from '../types';
-import { FormField, form, required, minLength, maxLength } from '@angular/forms/signals';
+
+import {
+  FormField,
+  form,
+  required,
+  minLength,
+  maxLength,
+  validateStandardSchema,
+} from '@angular/forms/signals';
+
+import { QuestionSubmissionItem } from '../../shared/api';
+import { zQuestionSubmissionItem } from '../../shared/api/zod.gen';
 
 @Component({
   selector: 'app-questions-ask',
@@ -41,14 +51,18 @@ export class Ask {
   model = signal<QuestionSubmissionItem>({
     title: '',
     content: '',
+    priority: 0,
   });
 
-  form = form(this.model, (schemata) => {
-    required(schemata.title);
-    minLength(schemata.title, 5);
-    maxLength(schemata.title, 100);
-    required(schemata.content);
-    minLength(schemata.content, 10);
-    maxLength(schemata.content, 1000);
+  // form = form(this.model, (schemata) => {
+  //   required(schemata.title);
+  //   minLength(schemata.title, 5);
+  //   maxLength(schemata.title, 100);
+  //   required(schemata.content);
+  //   minLength(schemata.content, 10);
+  //   maxLength(schemata.content, 1000);
+  // });
+  form = form(this.model, (schema) => {
+    validateStandardSchema(schema, zQuestionSubmissionItem);
   });
 }
