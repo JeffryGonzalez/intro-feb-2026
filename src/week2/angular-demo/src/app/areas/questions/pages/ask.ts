@@ -72,10 +72,6 @@ import { zQuestionSubmissionItem } from '../../shared/api/zod.gen';
       background-color: gray;
       cursor: not-allowed;
     }
-    input[required]::after {
-      content: ' *';
-      color: red;
-    }
   `,
 })
 export class Ask {
@@ -104,6 +100,8 @@ export class Ask {
   form = form(this.model, (schema) => {
     validateStandardSchema(schema, zQuestionSubmissionItem);
     // see styles.css and the input[required]::after rule - weird, but schema is different than form validation.
+    // Jeff showed this, don't think he just "knew" how to do this. He didn't. This was about 6 hours of frustration.
+
     required(schema.title);
     required(schema.content);
   });
